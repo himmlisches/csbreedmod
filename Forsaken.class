@@ -4,11 +4,6 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.text.*;
 
-//BREEDMOD IMPORT
-import java.math.*;
-
-
-//END BREEDMOD IMPORT
 
 public class Forsaken implements Serializable
 {
