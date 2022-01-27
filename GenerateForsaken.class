@@ -1,0 +1,10 @@
+import java.io.*;
+
+
+//see line 90750 of chosen.class for call
+public Class generateForsaken {
+
+   public Forsaken generateForsaken() {
+   
+    }
+} 
