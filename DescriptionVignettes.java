@@ -1,5 +1,4 @@
 import java.io.*;
-import java.lang.*;
 import java.util.*;
 
 
@@ -23,7 +22,7 @@ public class DescriptionVignettes {
     //get("boobshapedescriptions") should return "0"
      HashMap<String, Integer> characteristicsIndex;
 
-    ArrayList<ArrayList<ArrayList<ArrayList<String>>>> characteristicDescriptions;
+    ArrayList<ArrayList<ArrayList<String>>> characteristicDescriptions;
 
     ArrayList<ArrayList<String>> analSensitivityDescriptions;
     ArrayList<ArrayList<String>> analCapacityDescriptions;
@@ -84,7 +83,7 @@ public class DescriptionVignettes {
     ArrayList<ArrayList<String>> dickGirthDescriptions;
     ArrayList<ArrayList<String>> testicleSizeDescriptions;
     
-    public void instantiateCharacteristicDescriptions(){
+    public void instantiateCharacteristicDescriptions() throws FileNotFoundException{
         
        
 
@@ -157,7 +156,7 @@ public class DescriptionVignettes {
 
         }
        
-        this.characteristicDescriptions = new ArrayList<ArrayList<ArrayList<ArrayList<String>>>>();
+        this.characteristicDescriptions = new ArrayList<ArrayList<ArrayList<String>>>();
         
 
         //place non-base 10 severities at top. These are probably easier to load semi manually.
