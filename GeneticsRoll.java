@@ -22,8 +22,10 @@ public class GeneticsRoll {
         int newGene;
         int mean = 50;
         double deviation = 10.0;
+
+        Random newRandom = new Random();
         
-        newGene = Math.floor((Math.nextGaussian() * deviation) + mean);
+        newGene = Math.floor((newRandom.nextGaussian() * deviation) + mean);
 
         if (newGene < 0) {
              newGene = 0;
@@ -44,7 +46,9 @@ public class GeneticsRoll {
         int geneticDrift;
         double deviation = geneticDeviation;
 
-        geneticDrift = Math.floor(Math.nextGaussian() * deviation);
+        Random newRandom = new Random();
+
+        geneticDrift = Math.floor(newRandom.nextGaussian() * deviation);
 
         childGene =  geneticDrift + (Math.floor(0.5*(motherGene + fatherGene)));
         
