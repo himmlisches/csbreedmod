@@ -8,6 +8,18 @@ import java.util.*;
 import java.text.*;
 import javax.swing.*;
 
+
+
+/*
+Breedmod Bugfixes
+Line 5065 and removed "Hotkey" in continue constructor
+commented out duplicate at 7626, 7787
+commented out 5056, 6543, 7687
+8090 changed Project.ContinueButton("Continue", "Hotkey:"); to ContinueButton("Continue", "Hotkey:")
+5065, 6552, 7799, 7854 removed "Hotkey" from ContinueButtonTwo("Continue", "Hotkey:");
+
+*/
+
 public class Project extends JFrame
 {
     static final long million = 1000000L;
@@ -5041,7 +5053,7 @@ public class Project extends JFrame
                         class ContinueButton extends AbstractAction
                         {
                             public ContinueButton(final String desc) {
-                                super(text);
+                                //super(text);
                                 this.putValue("ShortDescription", desc);
                             }
                             
@@ -5050,7 +5062,7 @@ public class Project extends JFrame
                                 Project.EnemyTurn(t, p, f, w, initiative, 0);
                             }
                         }
-                        final Action ContinueAction = new ContinueButton("Continue", "Hotkey:");
+                        final Action ContinueAction = new ContinueButton("Continue");
                         final JButton Continue = new JButton(ContinueAction) {
                             @Override
                             public Point getToolTipLocation(final MouseEvent e) {
@@ -6528,7 +6540,7 @@ public class Project extends JFrame
                     class ContinueButton extends AbstractAction
                     {
                         public ContinueButton(final String desc) {
-                            super(text);
+                            //super(text);
                             this.putValue("ShortDescription", desc);
                         }
                         
@@ -6537,7 +6549,7 @@ public class Project extends JFrame
                             Project.EnemyTurn(t, p, f, w, initiative, 0);
                         }
                     }
-                    final Action ContinueAction = new ContinueButton("Continue", "Hotkey:");
+                    final Action ContinueAction = new ContinueButton("Continue");
                     final JButton Continue = new JButton(ContinueAction) {
                         @Override
                         public Point getToolTipLocation(final MouseEvent e) {
@@ -7611,7 +7623,7 @@ public class Project extends JFrame
         else {
             endgame = false;
         }
-        class ContinueButton extends AbstractAction
+        /*class ContinueButton extends AbstractAction
         {
             public ContinueButton(final String text, final String desc) {
                 super(text);
@@ -7622,7 +7634,7 @@ public class Project extends JFrame
             public void actionPerformed(final ActionEvent e) {
                 Project.EnemyTurn(t, p, f, w, initiative, currentProgress);
             }
-        }
+        }*/
         class ContinueButton extends AbstractAction
         {
             public ContinueButton(final String text, final String desc) {
@@ -7672,7 +7684,7 @@ public class Project extends JFrame
                 class ContinueButtonTwo extends AbstractAction
                 {
                     public ContinueButtonTwo(final String desc) {
-                        super(text);
+                        //super(text);
                         this.putValue("ShortDescription", desc);
                     }
                     
@@ -7769,7 +7781,7 @@ public class Project extends JFrame
                         w.append(t, "\n\n");
                         responding.printResponse(t, w);
                     }
-                    class ContinueButtonTwo extends AbstractAction
+                    /*class ContinueButtonTwo extends AbstractAction
                     {
                         public ContinueButtonTwo(final String desc) {
                             super(text);
@@ -7783,8 +7795,8 @@ public class Project extends JFrame
                             w.append(t, "\n");
                             Project.PickTarget(t, p, f, w);
                         }
-                    }
-                    final Action ContinueActionTwo = new ContinueButtonTwo("Continue", "Hotkey:");
+                    }*/
+                    final Action ContinueActionTwo = new ContinueButtonTwo("Continue");
                     final JButton Continue = new JButton(ContinueActionTwo) {
                         @Override
                         public Point getToolTipLocation(final MouseEvent e) {
@@ -7839,7 +7851,7 @@ public class Project extends JFrame
                             responder.printGreetingAgain(t, w, arrivingChosen);
                         }
                     }
-                    final Action ContinueActionTwo2 = new ContinueButtonTwo("Continue", "Hotkey:");
+                    final Action ContinueActionTwo2 = new ContinueButtonTwo("Continue");
                     final JButton Continue2 = new JButton(ContinueActionTwo2) {
                         @Override
                         public Point getToolTipLocation(final MouseEvent e) {
@@ -8075,7 +8087,7 @@ public class Project extends JFrame
             EndFinalBattle(t, p, f, w);
         }
         else if (moreTurns) {
-            final Action ContinueAction = new Project.ContinueButton("Continue", "Hotkey:");
+            final Action ContinueAction = new ContinueButton("Continue", "Hotkey:");
             final JButton Continue = new JButton(ContinueAction) {
                 @Override
                 public Point getToolTipLocation(final MouseEvent e) {

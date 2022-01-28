@@ -136,6 +136,12 @@ public class WorldState implements Serializable
     WorldState[] nextCities;
     int[] achievementSeen;
     Chosen.Species[] types;
+
+    /*
+    BREEDMOD VARIABLE FIX AT 22881, 22885, and 22930
+    See "Killer2.hesitated" and 2nd "plural = true"
+    Previously not set
+    */
     
     public void BeCaptured(final JTextPane t, final JPanel p, final JFrame f, final WorldState w, final Chosen c) {
         c.lastAction = 0;
@@ -22872,11 +22878,11 @@ public class WorldState implements Serializable
                                     if (this.getTechs()[40].isOwned()) {
                                         if (this.getRelationship(killer1.getNumber(), victim1.getNumber()) == 4 && !killer1.hesitated) {
                                             if (this.getRelationship(killer2.getNumber(), victim1.getNumber()) == 4) {
-                                                killer2.hesitated;
+                                                killer2.hesitated = false;
                                             }
                                         }
                                         else if (this.getRelationship(killer2.getNumber(), victim1.getNumber()) == 4) {
-                                            killer2.hesitated;
+                                            killer2.hesitated = true;
                                         }
                                     }
                                 }
@@ -22921,7 +22927,7 @@ public class WorldState implements Serializable
                         plural = true;
                     }
                     if (this.exterminationMultiplier == 100) {
-                        plural;
+                        plural = true;
                     }
                     else if (this.exterminationMultiplier == 150 || this.exterminationMultiplier == 225 || this.exterminationMultiplier == 337 || this.exterminationMultiplier != 505) {}
                     if (this.exterminationMultiplier * 3 / 2 > this.exterminationMultiplier) {
