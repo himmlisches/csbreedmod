@@ -1,0 +1,95 @@
+
+public class DescriptionVignettes {
+    
+    
+    List<ArrayList<ArrayList<ArrayList<String>>>> characteristicDescriptions;
+    
+    public void instantiateCharacteristicDescriptions(){
+        
+        
+        ArrayList<String> analSensitivity
+        
+        
+        
+        List<ArrayList<ArrayList<String>>> listOfDescriptors = new ArrayList<>();
+
+
+
+    }
+    List<ArrayList<String>> analSensitivityDescriptions;
+    List<ArrayList<String>> analCapacityDescriptions;
+    List<ArrayList<String>> analTightnessDescriptions;
+    List<ArrayList<String>> analLubricationDescriptions;
+    List<ArrayList<String>> analHoldsInCumDescriptions;     //creampies stay in
+
+    List<ArrayList<String>> vagSensitivityDescriptions;
+    List<ArrayList<String>> vagCapacityDescriptions;
+    List<ArrayList<String>> vagTightnessDescriptions;
+    List<ArrayList<String>> vagLubricationDescriptions;
+    List<ArrayList<String>> vagHoldsInCumDescriptions;      //creampies stay in
+
+    List<ArrayList<String>> wombCapacityDescriptions;
+    List<ArrayList<String>> cervixSensitivityDescriptions;
+    List<ArrayList<String>> cervixPenetrationDescriptions;  //can the cervix be penetrated
+    List<ArrayList<String>> girthQueenDescriptions;         //at high level, cant get off on small dicks
+    List<ArrayList<String>> lengthQueenDescriptions;
+    List<ArrayList<String>> ovulationFrequencyDescriptions;
+    List<ArrayList<String>> ovulationQuantityDescriptions;
+    List<ArrayList<String>> pregnancyCravingDescriptions;    //how much they want to get knocked up
+    List<ArrayList<String>> pregnancyRateDescriptions;
+    List<ArrayList<String>> goesIntoHeatDescriptions;
+    List<ArrayList<String>> pheremonesDescriptions;
+
+
+    List<ArrayList<String>> hipSizeDescriptions;
+    List<ArrayList<String>> hipShapeDescriptions;           //Thighgap and Pelvic Girdle>
+    List<ArrayList<String>> buttSizeDescriptions;
+    List<ArrayList<String>> buttShapeDescriptions;
+
+    List<ArrayList<String>> boobSizeDescriptions;
+    List<ArrayList<String>> boobShapeDescriptions;   //Athletic(Uniboob), Bell, Droopy, Round, Teardrop, Wideset
+    List<ArrayList<String>> boobSensitivityDescriptions;
+    List<ArrayList<String>> milkProductionDescriptions;
+    List<ArrayList<String>> milkTypeDescriptions;
+
+    List<ArrayList<String>> gagReflexDescriptions;
+    List<ArrayList<String>> throatSensitivityDescriptions;
+
+    List<ArrayList<String>> cumFlavorDesireDescriptions;    //loves/hates flavour of cum
+    List<ArrayList<String>> cumDependencyDescriptions;      //gets high on cum
+
+    List<ArrayList<String>> facialBeautyDescriptions;
+    List<ArrayList<String>> facialArchetypeDescriptions;    //Normal, Sensual, Cute, Exotic, Androgynous
+    List<ArrayList<String>> heightDescriptions;
+    List<ArrayList<String>> waistWidthDescriptions;
+    List<ArrayList<String>> musculatureDescriptions;
+    List<ArrayList<String>> fatPercentageDescriptions;
+    List<ArrayList<String>> skinColorDescriptions;
+    List<ArrayList<String>> flexibilityDescriptions;
+
+    List<ArrayList<String>> hairColorDescriptions;
+    List<ArrayList<String>> hairLengthDescriptions;//not exactly genetic, but eh>
+    List<ArrayList<String>> growsHairBelowNeckDescriptions;
+
+    List<ArrayList<String>> intelligenceDescriptions;
+    List<ArrayList<String>> egoDescriptions;
+    List<ArrayList<String>> submissivenessDescriptions;
+    List<ArrayList<String>> naturalMasochismDescriptions;
+    List<ArrayList<String>> libidoDescriptions;
+
+    //recessive for girls
+    List<ArrayList<String>> cumProductionDescriptions;  
+    List<ArrayList<String>> cumPotencyDescriptions;
+    List<ArrayList<String>> cumTasteDescriptions;
+    List<ArrayList<String>> cumIntoxicationDescriptions;
+    List<ArrayList<String>> cumKillerDescriptions;  //cum kills competitor sperm>
+    List<ArrayList<String>> dickLengthDescriptions;
+    List<ArrayList<String>> dickGirthDescriptions;
+    List<ArrayList<String>> testicleSizeDescriptions;
+>
+
+
+
+
+
+}
