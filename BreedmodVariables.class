@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class BreedmodVariables {
-    
+    //source control check
     int analSensitivity;
     int analCapacity;
     int analTightness;
