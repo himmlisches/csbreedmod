@@ -1,4 +1,3 @@
-import java.util.*;
 
 public class BreedmodVariables {
     
@@ -123,7 +122,7 @@ public class BreedmodVariables {
        
        this.height = breedmodVariables.initializeGeneticsValue(50, 70, 30);
        this.waistWidth = breedmodVariables.initializeGeneticsValue(50, 60, 40);
-       this.musculature = breedmodVariables.initializeGeneticsValue(50, 70, 20;
+       this.musculature = breedmodVariables.initializeGeneticsValue(50, 70, 20);
        this.fatPercentage = breedmodVariables.initializeGeneticsValue(40, 65, 20);
        this.skinColor = breedmodVariables.initializeGeneticsValue(20, 40, 1);
        this.flexibility = breedmodVariables.initializeGeneticsValue(40, 70, 10);
@@ -138,8 +137,7 @@ public class BreedmodVariables {
        this.naturalMasochism = breedmodVariables.initializeGeneticsValue(0, 40, 1);
        this.libido = breedmodVariables.initializeGeneticsValue(30, 40, 1);
 
-       this.cumProduction = breedmodVariables.initializeGeneticsValue(0, 3
-       20, 1);  
+       this.cumProduction = breedmodVariables.initializeGeneticsValue(0, 20, 1);  
        this.cumPotency = breedmodVariables.initializeGeneticsValue(0, 30, 1);  
        this.cumTaste = breedmodVariables.initializeGeneticsValue(0, 40, 1);  
        this.cumIntoxication = breedmodVariables.initializeGeneticsValue(0, 10, 1);  

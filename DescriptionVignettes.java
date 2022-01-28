@@ -1,6 +1,6 @@
 import java.io.*;
 import java.lang.*;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class DescriptionVignettes {
@@ -21,7 +21,7 @@ public class DescriptionVignettes {
     //HASHMAP TO FIND WHICH POSITION IN THE DESCRIPTOR ARRAY
     //A CHARACTERISTICS CAN BE FOUND
     //get("boobshapedescriptions") should return "0"
-     HashMap<String, int> characteristicsIndex;
+     HashMap<String, Integer> characteristicsIndex;
 
     ArrayList<ArrayList<ArrayList<ArrayList<String>>>> characteristicDescriptions;
 

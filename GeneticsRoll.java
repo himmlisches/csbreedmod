@@ -1,4 +1,5 @@
 import java.math.*;
+import java.util.*;
 
 public class GeneticsRoll { 
     public int newGene(){
@@ -22,7 +23,7 @@ public class GeneticsRoll {
         int mean = 50;
         double deviation = 10.0;
         
-        newGene = (Math.floor((Math.nextGaussian() * deviation) + mean);
+        newGene = Math.floor((Math.nextGaussian() * deviation) + mean);
 
         if (newGene < 0) {
              newGene = 0;
@@ -43,7 +44,7 @@ public class GeneticsRoll {
         int geneticDrift;
         double deviation = geneticDeviation;
 
-        geneticDrift = (Math.floor(Math.nextGaussian() * deviation);
+        geneticDrift = Math.floor(Math.nextGaussian() * deviation);
 
         childGene =  geneticDrift + (Math.floor(0.5*(motherGene + fatherGene)));
         
