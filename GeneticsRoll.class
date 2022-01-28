@@ -33,21 +33,22 @@ public class GeneticsRoll {
         return newGene;
     }
     
-    public int childGene(int motherGene, int fatherGene){
+    public int childGene(int motherGene, int fatherGene, double geneticDeviation){
         /**
          * Returns an int based on a mother and father value
+         * bounded 1-100
          */
 
         int childGene;
         int geneticDrift;
-        double deviation = 10.0;
+        double deviation = geneticDeviation;
 
         geneticDrift = (Math.floor(Math.nextGaussian() * deviation);
 
         childGene =  geneticDrift + (Math.floor(0.5*(motherGene + fatherGene)));
         
-        if (childGene < 0) {
-            childGene = 0;
+        if (childGene < 1) {
+            childGene = 1;
        } else if (childGene > 100) {
            childGene = 100;
        }

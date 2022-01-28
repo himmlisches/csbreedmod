@@ -61,6 +61,7 @@ public class BreedmodVariables {
     int submissiveness;
     int naturalMasochism;
     int libido;
+    int incestResistance;
 
     //Recessive for girls
     int cumProduction;
@@ -94,7 +95,7 @@ public class BreedmodVariables {
        this.cervixPenetration = breedmodVariables.initializeGeneticsValue(-20, 10, 1);
        this.girthQueen = breedmodVariables.initializeGeneticsValue(20, 65, 10);
        this.lengthQueen = breedmodVariables.initializeGeneticsValue(10, 40, 1);
-       this.ovulationFrequency = breedmodVariables.initializeGeneticsValue(0, 20, 1);
+       this.ovulationFrequency = breedmodVariables.initializeGeneticsValue(20, 30, 1);
        this.ovulationQuantity = breedmodVariables.initializeGeneticsValue(0, 40, 1);
        this.pregnancyCraving = breedmodVariables.initializeGeneticsValue(0, 40, 1);
        this.pregnancyRate = breedmodVariables.initializeGeneticsValue(20, 30, 10);
@@ -123,7 +124,7 @@ public class BreedmodVariables {
        this.height = breedmodVariables.initializeGeneticsValue(50, 70, 30);
        this.waistWidth = breedmodVariables.initializeGeneticsValue(50, 60, 40);
        this.musculature = breedmodVariables.initializeGeneticsValue(50, 70, 20;
-       this.fatPercentage = breedmodVariables.initializeGeneticsValue(50, 70, 30);
+       this.fatPercentage = breedmodVariables.initializeGeneticsValue(40, 65, 20);
        this.skinColor = breedmodVariables.initializeGeneticsValue(20, 40, 1);
        this.flexibility = breedmodVariables.initializeGeneticsValue(40, 70, 10);
    
@@ -147,6 +148,8 @@ public class BreedmodVariables {
        this.dickGirth = breedmodVariables.initializeGeneticsValue(10, 40, 1);  
        this.testicleSize = breedmodVariables.initializeGeneticsValue(10, 30, 1);
 
+       this.incestResistance = breedmodVariables.initializeGeneticsValue(1, 30, 1);
+
        
        //TYPE INSTANTIATIONS, NOT SURE HOW TO HANDLE THESE
        this.facialArchetype = breedmodVariables.initializeGeneticsValue(50, 100, 1); //for now, 1-20 "androgenous" 21-40 "normal" 41-60 "exotic" 61-80 "cute" 81-100 "sexy"
@@ -155,6 +158,13 @@ public class BreedmodVariables {
        this.hipShape = breedmodVariables.initializeGeneticsValue(30, 60, 10);  
 
        //BREEDMOD VARIABLE INSTANTIATION END
+
+    }
+
+
+    public void childBreedmodVars(){
+
+
 
     }
 }

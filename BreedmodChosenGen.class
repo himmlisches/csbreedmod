@@ -22,7 +22,7 @@ public class BreedmodChosenGen {
 		}
 
 		GeneticsRoll genetics = new GeneticsRoll();
-		result = genetics.newGene() + baseSensitivity;
+		result = genetics.newGene() + localSkew;
 
 		if (result > localMax) {
 			result = localMax;
