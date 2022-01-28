@@ -1,4 +1,3 @@
-import java.math.*;
 import java.util.*;
 
 public class GeneticsRoll { 
@@ -25,7 +24,7 @@ public class GeneticsRoll {
 
         Random newRandom = new Random();
         
-        newGene = Math.floor((newRandom.nextGaussian() * deviation) + mean);
+        newGene = (int)(newRandom.nextGaussian() * deviation) + mean;
 
         if (newGene < 0) {
              newGene = 0;
@@ -48,9 +47,9 @@ public class GeneticsRoll {
 
         Random newRandom = new Random();
 
-        geneticDrift = Math.floor(newRandom.nextGaussian() * deviation);
+        geneticDrift = (int)(newRandom.nextGaussian() * deviation);
 
-        childGene =  geneticDrift + (Math.floor(0.5*(motherGene + fatherGene)));
+        childGene =  geneticDrift + ((int)(0.5*(motherGene + fatherGene)));
         
         if (childGene < 1) {
             childGene = 1;
