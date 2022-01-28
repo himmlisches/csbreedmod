@@ -299,9 +299,11 @@ public class DescriptionVignettes {
         
         String currString;
 
-
+        //which characteristic
         int i = 0;
+        //which severity within characteristic
         int j = 0;
+        
         while (vignetteLoader.hasNext()){
 
             currString = vignetteLoader.next();
@@ -315,6 +317,7 @@ public class DescriptionVignettes {
             //if string is a characteristic name, load at index of that name
                 i = characteristicsIndex.get(currString);
 
+            //if string matches an int, set severity index to int
             }else if (currString.equals("1")){
                 j = 0;
             }else if (currString.equals("2")){
