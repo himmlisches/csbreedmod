@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 
-public class DescriptionVignettes {
+public class BreedmodVariableDescriptions {
     /**
      * VIGNETTES ARE LOADED ORDER DEPENDENT, ASSUMING ALL 
      * NON-BASE TEN SEVERITY DESCRIPTORS ARE MANUALLY LOADED INTO THE STRING 

@@ -92,7 +92,7 @@ public class Forsaken implements Serializable
     Chosen.Species type;
 	
 	//BREEDMOD VARIABLES
-	BreedmodVariables breedmodVars;
+	//BreedmodVariables breedmodVars;
 	
 	//END BREEDMOD VARIABLES
     
@@ -100,7 +100,7 @@ public class Forsaken implements Serializable
         this.formerSelf = c;
         
         //INSTANTIATE BREEDMODVARS
-        breedmodVars = c.breedmodVars;
+        //breedmodVars = c.breedmodVars;
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
