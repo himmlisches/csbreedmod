@@ -21,7 +21,7 @@ public class BreedmodChosenGen {
 			localMin = 1;
 		}
 
-		GeneticsRoll genetics = new GeneticsRoll();
+		BreedmodGeneticsRoll genetics = new BreedmodGeneticsRoll();
 		result = genetics.newGene() + localSkew;
 
 		if (result > localMax) {
