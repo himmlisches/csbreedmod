@@ -289,12 +289,12 @@ public class BreedmodVariableDescriptions {
 
         
         
-        Scanner vignetteLoader = new Scanner(new File("vignettes.csv"));
+        Scanner descriptionsLoader = new Scanner(new File("breedmodvariabledescriptions.csv"));
 
         // FOR EXPORTING GOOGLE SHEETS DOC: https://stackoverflow.com/questions/3315636/how-to-enclose-every-cell-with-double-quotes-in-google-docs-spreadsheet
 
         //.csv will output with """,""" between strings
-        vignetteLoader.useDelimiter("\"\"\",\"\"\"");
+        descriptionsLoader.useDelimiter("\"\"\",\"\"\"");
         
         String currString;
 
@@ -303,9 +303,9 @@ public class BreedmodVariableDescriptions {
         //which severity within characteristic
         int j = 0;
         
-        while (vignetteLoader.hasNext()){
+        while (descriptionsLoader.hasNext()){
 
-            currString = vignetteLoader.next();
+            currString = descriptionsLoader.next();
 
             
             //CHARACTERISTIC LOADING
@@ -348,7 +348,7 @@ public class BreedmodVariableDescriptions {
             }
         }
 
-        vignetteLoader.close();
+        descriptionsLoader.close();
 
     }
 
