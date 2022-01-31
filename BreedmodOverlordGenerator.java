@@ -8,8 +8,8 @@ public class BreedmodOverlordGenerator {
     Boolean overlordIsGaijin;
     String overlordGivenName;
     String overlordFamilyName;
-    String overlordOriginalGender;
-    String overlordGender;
+    Gender overlordOriginalGender;
+    Gender overlordGender;
     String overlordIncantation;
     String overlordAdjectiveName;
     String overlordNounName;
@@ -40,23 +40,23 @@ public class BreedmodOverlordGenerator {
         overlord.filthyGaijin = this.overlordIsGaijin;
         overlord.textColor = sacrifice.textColor;
         overlord.darkColor = sacrifice.textColor;
-        overlord.OriginalGender = this.OriginalGender;
-        overlord.Gender = this.Gender;
-        overlord.Incantation = this.Incantation;
-        overlord.AdjectiveName = this.AdjectiveName;
-        overlord.NounName = this.NounName;
-        overlord.MainName = this.MainName;
-        overlord.OriginalName = this.OriginalName;
-        overlord.TopCover = this.TopCover;
-        overlord.TopAccess = this.TopAccess;
-        overlord.BottomCover = this.BottomCover;
-        overlord.BottomAccess = this.BottomAccess;
-        overlord.UnderType = this.UnderType;
-        overlord.Color = this.Color;
-        overlord.Accessory = this.Accessory;
-        overlord.Weapon = this.Weapon;
-        overlord.CustomWeaponType = this.CustomWeaponType;
-        overlord.FeetType = this.FeetType;
+        overlord.originalGender = this.overlordOriginalGender;
+        overlord.gender = this.overlordGender;
+        overlord.incantation = this.overlordIncantation;
+        overlord.adjectiveName = this.overlordAdjectiveName;
+        overlord.nounName = this.overlordNounName;
+        overlord.mainName = this.overlordMainName;
+        overlord.originalName = this.overlordOriginalName;
+        overlord.topCover = this.overlordTopCover;
+        overlord.topAccess = this.overlordTopAccess;
+        overlord.bottomCover = this.overlordBottomCover;
+        overlord.bottomAccess = this.overlordBottomAccess;
+        overlord.underType = this.overlordUnderType;
+        overlord.color = this.overlordColor;
+        overlord.accessory = this.overlordAccessory;
+        overlord.weapon = this.overlordWeapon;
+        overlord.customWeaponType = this.overlordCustomWeaponType;
+        overlord.feetType = this.overlordFeetType;
         
         //save for consultation
         /*
