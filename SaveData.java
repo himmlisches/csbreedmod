@@ -1,339 +1,363 @@
-import java.io.*;
+import java.io.Serializable;
 import java.awt.*;
 
-public class SaveData implements Serializable
-{
-    private static final long serialVersionUID = -3432656854627862248L;
-    WorldState[] saves;
-    String[] names;
-    Forsaken[] harem;
-    int forsakenMade;
-    int chosenMade;
-    String[][][] sceneText;
-    Color[][][] sceneColor;
-    Boolean[][][] sceneUnderline;
-    String[] currentText;
-    Color[] currentColor;
-    Boolean[] currentUnderline;
-    String[][] sceneButtons;
-    String[][] sceneSummaries;
-    Project.Emotion[][][] sceneEmotions;
-    String[][][] sceneFaces;
-    Chosen.Species[][][] sceneSpecs;
-    Boolean[][][] sceneCivs;
-    Boolean[][][] sceneFallen;
-    Forsaken.Gender[][][] sceneGenders;
-    Chosen[] customRoster;
-    
-    public SaveData() {
-        this.saves = new WorldState[0];
-        this.names = new String[0];
-        this.harem = new Forsaken[0];
-        this.forsakenMade = 0;
-        this.chosenMade = 0;
-        this.sceneText = new String[48][0][0];
-        this.sceneColor = new Color[48][0][0];
-        this.sceneUnderline = new Boolean[48][0][0];
-        this.currentText = new String[0];
-        this.currentColor = new Color[0];
-        this.currentUnderline = new Boolean[0];
-        this.sceneButtons = new String[48][0];
-        this.sceneSummaries = new String[48][0];
-        this.sceneEmotions = new Project.Emotion[48][0][5];
-        this.sceneFaces = new String[48][0][5];
-        this.sceneSpecs = new Chosen.Species[48][0][5];
-        this.sceneCivs = new Boolean[48][0][5];
-        this.sceneFallen = new Boolean[48][0][5];
-        this.sceneGenders = new Forsaken.Gender[48][0][5];
-        this.customRoster = new Chosen[0];
-    }
-    
-    public void organizeScenes(final int scenesThisVersion) {
-        this.newScene();
-        final String[][][] newSceneText = new String[scenesThisVersion][0][0];
-        final Color[][][] newSceneColor = new Color[scenesThisVersion][0][0];
-        final Boolean[][][] newSceneUnderline = new Boolean[scenesThisVersion][0][0];
-        final String[][] newSceneButtons = new String[scenesThisVersion][0];
-        final String[][] newSceneSummaries = new String[scenesThisVersion][0];
-        final Project.Emotion[][][] newSceneEmotions = new Project.Emotion[scenesThisVersion][0][5];
-        final String[][][] newSceneFaces = new String[scenesThisVersion][0][5];
-        final Chosen.Species[][][] newSceneSpecs = new Chosen.Species[scenesThisVersion][0][5];
-        final Boolean[][][] newSceneCivs = new Boolean[scenesThisVersion][0][5];
-        final Boolean[][][] newSceneFallen = new Boolean[scenesThisVersion][0][5];
-        final Forsaken.Gender[][][] newSceneGenders = new Forsaken.Gender[scenesThisVersion][0][5];
-        if (this.sceneText != null) {
-            for (int i = 0; i < this.sceneText.length; ++i) {
-                newSceneText[i] = this.sceneText[i];
-                newSceneColor[i] = this.sceneColor[i];
-                newSceneUnderline[i] = this.sceneUnderline[i];
-                newSceneButtons[i] = this.sceneButtons[i];
-                newSceneSummaries[i] = this.sceneSummaries[i];
-                if (this.sceneEmotions != null) {
-                    newSceneEmotions[i] = this.sceneEmotions[i];
-                    newSceneFaces[i] = this.sceneFaces[i];
-                    newSceneSpecs[i] = this.sceneSpecs[i];
-                    newSceneCivs[i] = this.sceneCivs[i];
-                    newSceneFallen[i] = this.sceneFallen[i];
-                }
-                else {
-                    newSceneEmotions[i] = new Project.Emotion[this.sceneText[i].length][5];
-                    newSceneFaces[i] = new String[this.sceneText[i].length][5];
-                    newSceneSpecs[i] = new Chosen.Species[this.sceneText[i].length][5];
-                    newSceneCivs[i] = new Boolean[this.sceneText[i].length][5];
-                    newSceneFallen[i] = new Boolean[this.sceneText[i].length][5];
-                }
-                if (this.sceneGenders != null) {
-                    newSceneGenders[i] = this.sceneGenders[i];
-                }
-                else {
-                    newSceneGenders[i] = new Forsaken.Gender[this.sceneText[i].length][5];
-                }
-            }
-        }
-        this.sceneText = newSceneText;
-        this.sceneColor = newSceneColor;
-        this.sceneUnderline = newSceneUnderline;
-        this.sceneButtons = newSceneButtons;
-        this.sceneSummaries = newSceneSummaries;
-        this.sceneEmotions = newSceneEmotions;
-        this.sceneFaces = newSceneFaces;
-        this.sceneSpecs = newSceneSpecs;
-        this.sceneCivs = newSceneCivs;
-        this.sceneFallen = newSceneFallen;
-        this.sceneGenders = newSceneGenders;
-    }
-    
-    public void newScene() {
-        this.currentText = new String[0];
-        this.currentColor = new Color[0];
-        this.currentUnderline = new Boolean[0];
-    }
-    
-    public void addLine(final String t, final Color c, final Boolean u) {
-        final String[] newText = new String[this.currentText.length + 1];
-        final Color[] newColor = new Color[this.currentColor.length + 1];
-        final Boolean[] newUnderline = new Boolean[this.currentUnderline.length + 1];
-        for (int i = 0; i < this.currentText.length; ++i) {
-            newText[i] = this.currentText[i];
-            newColor[i] = this.currentColor[i];
-            newUnderline[i] = this.currentUnderline[i];
-        }
-        newText[this.currentText.length] = t;
-        newColor[this.currentColor.length] = c;
-        newUnderline[this.currentUnderline.length] = u;
-        this.currentText = newText;
-        this.currentColor = newColor;
-        this.currentUnderline = newUnderline;
-    }
-    
-    public void saveScene(final int type, final String button, final String summary) {
-        Boolean unique = true;
-        Boolean difference;
-        for (int i = 0; i < this.sceneText[type].length && unique; unique = difference, ++i) {
-            difference = false;
-            for (int j = 0; j < this.sceneText[type][i].length && !difference; ++j) {
-                if (this.sceneText[type][i].length != this.currentText.length) {
-                    difference = true;
-                }
-                else if (!this.sceneText[type][i][j].contentEquals(this.currentText[j])) {
-                    difference = true;
-                }
-            }
-        }
-        if (unique) {
-            final String[][] newText = new String[this.sceneText[type].length + 1][0];
-            final Color[][] newColor = new Color[this.sceneColor[type].length + 1][0];
-            final Boolean[][] newUnderline = new Boolean[this.sceneUnderline[type].length + 1][0];
-            final String[] newButtons = new String[this.sceneButtons[type].length + 1];
-            final String[] newSummaries = new String[this.sceneSummaries[type].length + 1];
-            final Project.Emotion[][] newEmotions = new Project.Emotion[this.sceneEmotions[type].length + 1][5];
-            final String[][] newFaces = new String[this.sceneFaces[type].length + 1][5];
-            final Chosen.Species[][] newSpecs = new Chosen.Species[this.sceneSpecs[type].length + 1][5];
-            final Boolean[][] newCivs = new Boolean[this.sceneCivs[type].length + 1][5];
-            final Boolean[][] newFallen = new Boolean[this.sceneFallen[type].length + 1][5];
-            final Forsaken.Gender[][] newGenders = new Forsaken.Gender[this.sceneGenders[type].length + 1][5];
-            for (int k = 0; k < this.sceneText[type].length; ++k) {
-                newText[k] = this.sceneText[type][k];
-                newColor[k] = this.sceneColor[type][k];
-                newUnderline[k] = this.sceneUnderline[type][k];
-                newButtons[k] = this.sceneButtons[type][k];
-                newSummaries[k] = this.sceneSummaries[type][k];
-                newEmotions[k] = this.sceneEmotions[type][k];
-                newFaces[k] = this.sceneFaces[type][k];
-                newSpecs[k] = this.sceneSpecs[type][k];
-                newCivs[k] = this.sceneCivs[type][k];
-                newFallen[k] = this.sceneFallen[type][k];
-                newGenders[k] = this.sceneGenders[type][k];
-            }
-            newText[this.sceneText[type].length] = this.currentText;
-            newColor[this.sceneColor[type].length] = this.currentColor;
-            newUnderline[this.sceneUnderline[type].length] = this.currentUnderline;
-            newButtons[this.sceneButtons[type].length] = button;
-            newSummaries[this.sceneSummaries[type].length] = summary;
-            newEmotions[this.sceneEmotions[type].length] = Project.displayedEmotions;
-            newFaces[this.sceneFaces[type].length] = Project.displayedNames;
-            newSpecs[this.sceneSpecs[type].length] = Project.displayedType;
-            newCivs[this.sceneCivs[type].length] = Project.displayedCivilians;
-            newFallen[this.sceneFallen[type].length] = Project.displayedFallen;
-            newGenders[this.sceneGenders[type].length] = Project.displayedGender;
-            this.sceneText[type] = newText;
-            this.sceneColor[type] = newColor;
-            this.sceneUnderline[type] = newUnderline;
-            this.sceneButtons[type] = newButtons;
-            this.sceneSummaries[type] = newSummaries;
-            this.sceneEmotions[type] = newEmotions;
-            this.sceneFaces[type] = newFaces;
-            this.sceneSpecs[type] = newSpecs;
-            this.sceneCivs[type] = newCivs;
-            this.sceneFallen[type] = newFallen;
-            this.sceneGenders[type] = newGenders;
-            final WriteObject wobj = new WriteObject();
-            wobj.serializeSaveData(this);
-        }
-        this.newScene();
-    }
-    
-    public int assignID() {
-        return ++this.forsakenMade;
-    }
-    
-    public int assignChosenID() {
-        return ++this.chosenMade;
-    }
-    
-    public void fillIDs() {
-        for (int i = 0; i < this.harem.length; ++i) {
-            if (this.harem[i].forsakenID == 0) {
-                this.harem[i].forsakenID = this.assignID();
-            }
-        }
-        for (int i = 0; i < this.saves.length; ++i) {
-            if (this.saves[i].campaign == null) {
-                this.saves[i].campaign = false;
-            }
-            if (this.saves[i].campaign) {
-                for (int j = 0; j < this.saves[i].conquered.length; ++j) {
-                    if (this.saves[i].conquered[j].forsakenID == 0) {
-                        this.saves[i].conquered[j].forsakenID = this.assignID();
-                    }
-                }
-                for (int j = 0; j < this.saves[i].sacrificed.length; ++j) {
-                    if (this.saves[i].sacrificed[j].forsakenID == 0) {
-                        this.saves[i].sacrificed[j].forsakenID = this.assignID();
-                    }
-                }
-            }
-            for (int j = 0; j < 3; ++j) {
-                if (this.saves[i].getCast()[j] != null && this.saves[i].getCast()[j].globalID == 0) {
-                    this.saves[i].getCast()[j].globalID = this.assignChosenID();
-                }
-            }
-        }
-    }
-    
-    public void checkIDs() {
-        int highest = 0;
-        int highestChosen = 0;
-        for (int i = 0; i < this.harem.length; ++i) {
-            if (this.harem[i].forsakenID > highest) {
-                highest = this.harem[i].forsakenID;
-            }
-        }
-        for (int i = 0; i < this.saves.length; ++i) {
-            if (this.saves[i].campaign) {
-                for (int j = 0; j < this.saves[i].conquered.length; ++j) {
-                    if (this.saves[i].conquered[j].forsakenID > highest) {
-                        highest = this.saves[i].conquered[j].forsakenID;
-                    }
-                }
-                for (int j = 0; j < this.saves[i].sacrificed.length; ++j) {
-                    if (this.saves[i].sacrificed[j].forsakenID > highest) {
-                        highest = this.saves[i].sacrificed[j].forsakenID;
-                    }
-                }
-            }
-            for (int j = 0; j < 3; ++j) {
-                if (this.saves[i].getCast()[j] != null && this.saves[i].getCast()[j].globalID > highestChosen) {
-                    highestChosen = this.saves[i].getCast()[j].globalID;
-                }
-            }
-        }
-        this.forsakenMade = highest;
-        this.chosenMade = highestChosen;
-    }
-    
-    public WorldState[] getSaves() {
-        return this.saves;
-    }
-    
-    public String[] getNames() {
-        return this.names;
-    }
-    
-    public void newSave(final WorldState w, final String name) {
-        final WorldState[] newSaves = new WorldState[this.saves.length + 1];
-        newSaves[0] = w;
-        final String[] newNames = new String[this.names.length + 1];
-        newNames[0] = name;
-        for (int i = 0; i < this.saves.length; ++i) {
-            newSaves[i + 1] = this.saves[i];
-            newNames[i + 1] = this.names[i];
-        }
-        this.saves = newSaves;
-        this.names = newNames;
-    }
-    
-    public void endSave(final WorldState w, final String name) {
-        final WorldState[] newSaves = new WorldState[this.saves.length + 1];
-        newSaves[this.saves.length] = w;
-        w.save = this;
-        final String[] newNames = new String[this.names.length + 1];
-        newNames[this.saves.length] = name;
-        for (int i = 0; i < this.saves.length; ++i) {
-            newSaves[i] = this.saves[i];
-            newNames[i] = this.names[i];
-        }
-        this.saves = newSaves;
-        this.names = newNames;
-    }
-    
-    public void overwriteSave(final WorldState w) {
-        this.saves[0] = w;
-    }
-    
-    public void deleteSave(final int file) {
-        final WorldState[] newSaves = new WorldState[this.saves.length - 1];
-        final String[] newNames = new String[this.names.length - 1];
-        for (int i = 0; i < this.saves.length; ++i) {
-            if (i < file) {
-                newSaves[i] = this.saves[i];
-                newNames[i] = this.names[i];
-            }
-            else if (i > file) {
-                newSaves[i - 1] = this.saves[i];
-                newNames[i - 1] = this.names[i];
-            }
-        }
-        this.saves = newSaves;
-        this.names = newNames;
-    }
-    
-    public void moveToFront(final int file) {
-        final WorldState[] newSaves = new WorldState[this.saves.length];
-        final String[] newNames = new String[this.names.length];
-        newSaves[0] = this.saves[file];
-        newNames[0] = this.names[file];
-        for (int i = 0; i < this.saves.length - 1; ++i) {
-            if (i < file) {
-                newSaves[i + 1] = this.saves[i];
-                newNames[i + 1] = this.names[i];
-            }
-            else {
-                newSaves[i + 1] = this.saves[i + 1];
-                newNames[i + 1] = this.names[i + 1];
-            }
-        }
-        this.saves = newSaves;
-        this.names = newNames;
-    }
+public class SaveData implements Serializable {
+	
+	private static final long serialVersionUID = -3432656854627862248L;
+	
+	WorldState[] saves = new WorldState[0];
+	String[] names = new String[0];
+	Forsaken[] harem = new Forsaken[0];
+	int forsakenMade = 0;
+	int chosenMade = 0;
+	String[][][] sceneText = new String[Project.scenesThisVersion][0][0];
+	Color[][][] sceneColor = new Color[Project.scenesThisVersion][0][0];
+	Boolean[][][] sceneUnderline = new Boolean[Project.scenesThisVersion][0][0];
+	String[] currentText = new String[0];
+	Color[] currentColor = new Color[0];
+	Boolean[] currentUnderline = new Boolean[0];
+	String[][] sceneButtons = new String[Project.scenesThisVersion][0];
+	String[][] sceneSummaries = new String[Project.scenesThisVersion][0];
+	Project.Emotion[][][] sceneEmotions = new Project.Emotion[Project.scenesThisVersion][0][5];
+	String[][][] sceneFaces = new String[Project.scenesThisVersion][0][5];
+	Chosen.Species[][][] sceneSpecs = new Chosen.Species[Project.scenesThisVersion][0][5];
+	Boolean[][][] sceneCivs = new Boolean[Project.scenesThisVersion][0][5];
+	Boolean[][][] sceneFallen = new Boolean[Project.scenesThisVersion][0][5];
+	Forsaken.Gender[][][] sceneGenders = new Forsaken.Gender[Project.scenesThisVersion][0][5];
+	
+	public void organizeScenes(int scenesThisVersion) {
+		//0: first meetings (pair and trio)
+		//1: interviews (1, 2, and 3)
+		//2: vacations (1, 2, and 3)
+		//3: preparations (1, 2, and 3)
+		//4: epilogues
+		//5: first violences
+		//6: first services
+		//7: first beggings
+		//8: first coverings
+		//9: first rapes
+		//10: first orgasms
+		//11: first tortures
+		//12: first broadcasts
+		//13: first slaughters
+		//14: first fantasizes
+		//15: first detonations
+		//16: first stripteases
+		//17: first impregnations
+		//18: first hypnotisms
+		//19: first drains
+		//20: first parasitisms
+		//21: Morality/Confidence distortion 1
+		//22: Morality/Confidence distortion 2
+		//23: Innocence/Dignity distortion 1
+		//24: Innocence/Dignity distortion 2
+		//25: Innocence/Confidence distortion 1
+		//26: Innocence/Confidence distortion 2
+		//27: Morality/Dignity distortion 1
+		//28: Morality/Dignity distortion 2
+		//29: Morality/Innocence distortion 1
+		//30: Morality/Innocence distortion 2
+		//31: Confidence/Dignity distortion 1
+		//32: Confidence/Dignity distortion 2
+		//33: Service to secure donations (high Morality, T1 Innocence)
+		//34: Sexual training (high Confidence, T1 Innocence)
+		//35: Blackmailed into service (high Dignity, T1 Innocence, no more than T1 Dignity)
+		//36: Bodypaint to render stripping irrelevant (high Innocence, T2 Dignity)
+		//37: Public appearances in increasingly skimpy outfits [or photoshoot?] (high Confidence, T2 Dignity)
+		//38: Berated by a former fan (high Morality, T2 Dignity)
+		//39: Sex between two Chosen (mid Confidence, low Confidence, friendly, T2 Morality)
+		//40: Sex between two Chosen (high Confidence, low Confidence, friendly)
+		//41: Train molester (high Morality, low trauma)
+		//42: Sex between two Chosen (high Confidence, mid Confidence, friendly)
+		//43: Guilted by serviced Thrall (high Morality, T1 Innocence and T1 Confidence)
+		//44: Sleep molester (mid Morality, low trauma)
+		newScene();
+		String[][][] newSceneText = new String[scenesThisVersion][0][0];
+		Color[][][] newSceneColor = new Color[scenesThisVersion][0][0];
+		Boolean[][][] newSceneUnderline = new Boolean[scenesThisVersion][0][0];
+		String[][] newSceneButtons = new String[scenesThisVersion][0];
+		String[][] newSceneSummaries = new String[scenesThisVersion][0];
+		Project.Emotion[][][] newSceneEmotions = new Project.Emotion[scenesThisVersion][0][5];
+		String[][][] newSceneFaces = new String[scenesThisVersion][0][5];
+		Chosen.Species[][][] newSceneSpecs = new Chosen.Species[scenesThisVersion][0][5];
+		Boolean[][][] newSceneCivs = new Boolean[scenesThisVersion][0][5];
+		Boolean[][][] newSceneFallen = new Boolean[scenesThisVersion][0][5];
+		Forsaken.Gender[][][] newSceneGenders = new Forsaken.Gender[scenesThisVersion][0][5];
+		if (sceneText != null) {
+			for (int i = 0; i < sceneText.length; i++) {
+				newSceneText[i] = sceneText[i];
+				newSceneColor[i] = sceneColor[i];
+				newSceneUnderline[i] = sceneUnderline[i];
+				newSceneButtons[i] = sceneButtons[i];
+				newSceneSummaries[i] = sceneSummaries[i];
+				if (sceneEmotions != null) {
+					newSceneEmotions[i] = sceneEmotions[i];
+					newSceneFaces[i] = sceneFaces[i];
+					newSceneSpecs[i] = sceneSpecs[i];
+					newSceneCivs[i] = sceneCivs[i];
+					newSceneFallen[i] = sceneFallen[i];
+				} else {
+					newSceneEmotions[i] = new Project.Emotion[sceneText[i].length][5];
+					newSceneFaces[i] = new String[sceneText[i].length][5];
+					newSceneSpecs[i] = new Chosen.Species[sceneText[i].length][5];
+					newSceneCivs[i] = new Boolean[sceneText[i].length][5];
+					newSceneFallen[i] = new Boolean[sceneText[i].length][5];
+				}
+				if (sceneGenders != null) {
+					newSceneGenders[i] = sceneGenders[i];
+				} else {
+					newSceneGenders[i] = new Forsaken.Gender[sceneText[i].length][5];
+				}
+			}
+		}
+		sceneText = newSceneText;
+		sceneColor = newSceneColor;
+		sceneUnderline = newSceneUnderline;
+		sceneButtons = newSceneButtons;
+		sceneSummaries = newSceneSummaries;
+		sceneEmotions = newSceneEmotions;
+		sceneFaces = newSceneFaces;
+		sceneSpecs = newSceneSpecs;
+		sceneCivs = newSceneCivs;
+		sceneFallen = newSceneFallen;
+		sceneGenders = newSceneGenders;
+	}
+	
+	public void newScene() {
+		currentText = new String[0];
+		currentColor = new Color[0];
+		currentUnderline = new Boolean[0];
+	}
+	
+	public void addLine(String t, Color c, Boolean u) {
+		String[] newText = new String[currentText.length+1];
+		Color[] newColor = new Color[currentColor.length+1];
+		Boolean[] newUnderline = new Boolean[currentUnderline.length+1];
+		for (int i = 0; i < currentText.length; i++) {
+			newText[i] = currentText[i];
+			newColor[i] = currentColor[i];
+			newUnderline[i] = currentUnderline[i];
+		}
+		newText[currentText.length] = t;
+		newColor[currentColor.length] = c;
+		newUnderline[currentUnderline.length] = u;
+		currentText = newText;
+		currentColor = newColor;
+		currentUnderline = newUnderline;
+	}
+	
+	public void saveScene(int type, String button, String summary) {
+		Boolean unique = true;
+		for (int i = 0; i < sceneText[type].length && unique; i++) {
+			Boolean difference = false;
+			for (int j = 0; j < sceneText[type][i].length && difference == false; j++) {
+				if (sceneText[type][i].length != currentText.length) {
+					difference = true;
+				} else if (sceneText[type][i][j].contentEquals(currentText[j]) == false) {
+					difference = true;
+				}
+			}
+			unique = difference;
+		}
+		if (unique) {
+			String[][] newText = new String[sceneText[type].length+1][0];
+			Color[][] newColor = new Color[sceneColor[type].length+1][0];
+			Boolean[][] newUnderline = new Boolean[sceneUnderline[type].length+1][0];
+			String[] newButtons = new String[sceneButtons[type].length+1];
+			String[] newSummaries = new String[sceneSummaries[type].length+1];
+			Project.Emotion[][] newEmotions = new Project.Emotion[sceneEmotions[type].length+1][5];
+			String[][] newFaces = new String[sceneFaces[type].length+1][5];
+			Chosen.Species[][] newSpecs = new Chosen.Species[sceneSpecs[type].length+1][5];
+			Boolean[][] newCivs = new Boolean[sceneCivs[type].length+1][5];
+			Boolean[][] newFallen = new Boolean[sceneFallen[type].length+1][5];
+			Forsaken.Gender[][] newGenders = new Forsaken.Gender[sceneGenders[type].length+1][5];
+			for (int i = 0; i < sceneText[type].length; i++) {
+				newText[i] = sceneText[type][i];
+				newColor[i] = sceneColor[type][i];
+				newUnderline[i] = sceneUnderline[type][i];
+				newButtons[i] = sceneButtons[type][i];
+				newSummaries[i] = sceneSummaries[type][i];
+				newEmotions[i] = sceneEmotions[type][i];
+				newFaces[i] = sceneFaces[type][i];
+				newSpecs[i] = sceneSpecs[type][i];
+				newCivs[i] = sceneCivs[type][i];
+				newFallen[i] = sceneFallen[type][i];
+				newGenders[i] = sceneGenders[type][i];
+			}
+			newText[sceneText[type].length] = currentText;
+			newColor[sceneColor[type].length] = currentColor;
+			newUnderline[sceneUnderline[type].length] = currentUnderline;
+			newButtons[sceneButtons[type].length] = button;
+			newSummaries[sceneSummaries[type].length] = summary;
+			newEmotions[sceneEmotions[type].length] = Project.displayedEmotions;
+			newFaces[sceneFaces[type].length] = Project.displayedNames;
+			newSpecs[sceneSpecs[type].length] = Project.displayedType;
+			newCivs[sceneCivs[type].length] = Project.displayedCivilians;
+			newFallen[sceneFallen[type].length] = Project.displayedFallen;
+			newGenders[sceneGenders[type].length] = Project.displayedGender;
+			sceneText[type] = newText;
+			sceneColor[type] = newColor;
+			sceneUnderline[type] = newUnderline;
+			sceneButtons[type] = newButtons;
+			sceneSummaries[type] = newSummaries;
+			sceneEmotions[type] = newEmotions;
+			sceneFaces[type] = newFaces;
+			sceneSpecs[type] = newSpecs;
+			sceneCivs[type] = newCivs;
+			sceneFallen[type] = newFallen;
+			sceneGenders[type] = newGenders;
+			WriteObject wobj = new WriteObject();
+			wobj.serializeSaveData(this);
+		}
+		newScene();
+	}
+	
+	public int assignID() {
+		forsakenMade++;
+		return forsakenMade;
+	}
+	
+	public int assignChosenID() {
+		chosenMade++;
+		return chosenMade;
+	}
+	
+	public void fillIDs() {
+		for (int i = 0; i < harem.length; i++) {
+			if (harem[i].forsakenID == 0) {
+				harem[i].forsakenID = assignID();
+			}
+		}
+		for (int i = 0; i < saves.length; i++) {
+			if (saves[i].campaign == null) {
+				saves[i].campaign = false;
+			}
+			if (saves[i].campaign) {
+				for (int j = 0; j < saves[i].conquered.length; j++) {
+					if (saves[i].conquered[j].forsakenID == 0) {
+						saves[i].conquered[j].forsakenID = assignID();
+					}
+				}
+				for (int j = 0; j < saves[i].sacrificed.length; j++) {
+					if (saves[i].sacrificed[j].forsakenID == 0) {
+						saves[i].sacrificed[j].forsakenID = assignID();
+					}
+				}
+			}
+			for (int j = 0; j < 3; j++) {
+				if (saves[i].getCast()[j] != null) {
+					if (saves[i].getCast()[j].globalID == 0) {
+						saves[i].getCast()[j].globalID = assignChosenID();
+					}
+				}
+			}
+		}
+	}
+	
+	public void checkIDs() {
+		int highest = 0;
+		int highestChosen = 0;
+		for (int i = 0; i < harem.length; i++) {
+			if (harem[i].forsakenID > highest) {
+				highest = harem[i].forsakenID;
+			}
+		}
+		for (int i = 0; i < saves.length; i++) {
+			if (saves[i].campaign) {
+				for (int j = 0; j < saves[i].conquered.length; j++) {
+					if (saves[i].conquered[j].forsakenID > highest) {
+						highest = saves[i].conquered[j].forsakenID;
+					}
+				}
+				for (int j = 0; j < saves[i].sacrificed.length; j++) {
+					if (saves[i].sacrificed[j].forsakenID > highest) {
+						highest = saves[i].sacrificed[j].forsakenID;
+					}
+				}
+			}
+			for (int j = 0; j < 3; j++) {
+				if (saves[i].getCast()[j] != null) {
+					if (saves[i].getCast()[j].globalID > highestChosen) {
+						highestChosen = saves[i].getCast()[j].globalID;
+					}
+				}
+			}
+		}
+		forsakenMade = highest;
+		chosenMade = highestChosen;
+	}
+	
+	public WorldState[] getSaves() {
+		return saves;
+	}
+	
+	public String[] getNames() {
+		return names;
+	}
+	
+	public void newSave(WorldState w, String name) {
+		WorldState[] newSaves = new WorldState[saves.length + 1];
+		newSaves[0] = w;
+		String[] newNames = new String[names.length + 1];
+		newNames[0] = name;
+		for (int i = 0; i < saves.length; i++) {
+			newSaves[i+1] = saves[i];
+			newNames[i+1] = names[i];
+		}
+		saves = newSaves;
+		names = newNames;
+	}
+	
+	public void endSave(WorldState w, String name) {
+		WorldState[] newSaves = new WorldState[saves.length + 1];
+		newSaves[saves.length] = w;
+		w.save = this;
+		String[] newNames = new String[names.length + 1];
+		newNames[saves.length] = name;
+		for (int i = 0; i < saves.length; i++) {
+			newSaves[i] = saves[i];
+			newNames[i] = names[i];
+		}
+		saves = newSaves;
+		names = newNames;
+	}
+	
+	public void overwriteSave(WorldState w) {
+		saves[0] = w;
+	}
+	
+	public void deleteSave(int file) {
+		WorldState[] newSaves = new WorldState[saves.length - 1];
+		String[] newNames = new String[names.length - 1];
+		for (int i = 0; i < saves.length; i++) {
+			if (i < file) {
+				newSaves[i] = saves[i];
+				newNames[i] = names[i];
+			} else if (i > file) {
+				newSaves[i-1] = saves[i];
+				newNames[i-1] = names[i];
+			}
+		}
+		saves = newSaves;
+		names = newNames;
+	}
+	
+	public void moveToFront(int file) {
+		WorldState[] newSaves = new WorldState[saves.length];
+		String[] newNames = new String[names.length];
+		newSaves[0] = saves[file];
+		newNames[0] = names[file];
+		for (int i = 0; i < saves.length - 1; i++) {
+			if (i < file) {
+				newSaves[i+1] = saves[i];
+				newNames[i+1] = names[i];
+			} else {
+				newSaves[i+1] = saves[i+1];
+				newNames[i+1] = names[i+1];
+			}
+		}
+		saves = newSaves;
+		names = newNames;
+	}
+	
 }
