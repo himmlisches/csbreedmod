@@ -23,7 +23,7 @@ public class Chosen implements Serializable {
 	String adjectiveName;
 	String nounName;
 	String mainName;
-	String topCover;
+	String topCover; 
 	String topAccess;
 	String bottomCover;
 	String bottomAccess;

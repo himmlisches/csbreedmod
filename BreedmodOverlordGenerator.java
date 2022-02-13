@@ -58,30 +58,32 @@ public class BreedmodOverlordGenerator {
         overlord.customWeaponType = this.overlordCustomWeaponType;
         overlord.feetType = this.overlordFeetType;
         
-        //save for consultation
-        /*
-        int number;
-        int morality;
-        int innocence;
-        int confidence;
-        int dignity;
-        int hostility;
-        int deviancy;
-        int obedience;
-        int disgrace;
-        int stamina;
-        int motivation;
-        Taker[] takers;
-        int[] takerIDs;
+        int number; //number of killed chosen
         Chosen[] kills;
+
+        overlord.morality = 0; //how guilty they feel
+        overlord.innocence = 0;  //perversity
+        overlord.confidence = 100; //devotion? I think?
+        overlord.dignity = 0; //amount they attack other forsaken?
+        overlord.hostility = this.hostility;  //needless pain caused
+        overlord.deviancy = this.deviancy;   //how kinky you are
+        overlord.obedience = 100; //to your will
+        overlord.disgrace = 0; //humility
+        int stamina = 2000;
+        int motivation = 10000;
+
+
+        overlord.takers = {Taker.NONE, Taker.NONE, Taker.NONE, Taker.NONE};
+        overlord.takerIDs = new int[4];
+
         int[] killRelationships;
         int defeatType;
         Chosen formerSelf;
         int[][] formerRelationships;
         Forsaken firstPartner;
         Forsaken secondPartner;
-        Chosen firstFormerPartner;
-        Chosen secondFormerPartner;
+        Chosen firstFormerPartner = 0;
+        Chosen secondFormerPartner = 0;
         int firstOriginalRelationship;
         int secondOriginalRelationship;
         Forsaken[] others;
@@ -99,7 +101,6 @@ public class BreedmodOverlordGenerator {
         int combatStyle;
         int injured;
 
-        */
 
         overlord.ruthless = this.overlordIsRuthless;
         overlord.lustful = this.overlordIsLustful;
