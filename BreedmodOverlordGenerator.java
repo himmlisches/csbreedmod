@@ -59,8 +59,8 @@ public class BreedmodOverlordGenerator {
         overlord.customWeaponType = this.overlordCustomWeaponType;
         overlord.feetType = this.overlordFeetType;
         
-        int number; //number of killed chosen
-        Chosen[] kills;
+        overlord.number = 0; //number of killed chosen
+        overlord.kills = sacrifice.kills;
 
         overlord.morality = 0; //how guilty they feel
         overlord.innocence = 0;  //perversity
@@ -70,11 +70,15 @@ public class BreedmodOverlordGenerator {
         overlord.deviancy = this.overlordDeviancy;   //how kinky you are
         overlord.obedience = 100; //to your will
         overlord.disgrace = 0; //humility
-        int stamina = 2000;
-        int motivation = 10000;
+        overlord.stamina = 2000;
+        overlord.motivation = 10000;
 
 
-        overlord.takers = {Taker.NONE, Taker.NONE, Taker.NONE, Taker.NONE};
+        overlord.takers[0] = Forsaken.Taker.NONE;
+        overlord.takers[1] = Forsaken.Taker.NONE;
+        overlord.takers[2] = Forsaken.Taker.NONE;
+        overlord.takers[3] = Forsaken.Taker.NONE;
+
         overlord.takerIDs = new int[4];
 
         //forsaken.killRelationships;
