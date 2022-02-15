@@ -8,8 +8,8 @@ public class BreedmodOverlordGenerator {
     Boolean overlordIsGaijin;
     String overlordGivenName;
     String overlordFamilyName;
-    Gender overlordOriginalGender;
-    Gender overlordGender;
+    Forsaken.Gender overlordOriginalGender;
+    Forsaken.Gender overlordGender;
     String overlordIncantation;
     String overlordAdjectiveName;
     String overlordNounName;
@@ -27,8 +27,9 @@ public class BreedmodOverlordGenerator {
     String overlordFeetType;
     Boolean overlordIsRuthless;
     Boolean overlordIsLustful;
-
-    
+    int overlordHostility;
+    int overlordDeviancy;
+    int overlordCombatStyle;
 
     public Forsaken generateOverlord (Forsaken sacrifice) {
 
@@ -65,8 +66,8 @@ public class BreedmodOverlordGenerator {
         overlord.innocence = 0;  //perversity
         overlord.confidence = 100; //devotion? I think?
         overlord.dignity = 0; //amount they attack other forsaken?
-        overlord.hostility = this.hostility;  //needless pain caused
-        overlord.deviancy = this.deviancy;   //how kinky you are
+        overlord.hostility = this.overlordHostility;  //needless pain caused
+        overlord.deviancy = this.overlordDeviancy;   //how kinky you are
         overlord.obedience = 100; //to your will
         overlord.disgrace = 0; //humility
         int stamina = 2000;
@@ -76,30 +77,30 @@ public class BreedmodOverlordGenerator {
         overlord.takers = {Taker.NONE, Taker.NONE, Taker.NONE, Taker.NONE};
         overlord.takerIDs = new int[4];
 
-        int[] killRelationships;
-        int defeatType;
-        Chosen formerSelf;
-        int[][] formerRelationships;
-        Forsaken firstPartner;
-        Forsaken secondPartner;
-        Chosen firstFormerPartner = 0;
-        Chosen secondFormerPartner = 0;
-        int firstOriginalRelationship;
-        int secondOriginalRelationship;
-        Forsaken[] others;
-        Chosen[] otherChosen;
-        int[] troublemaker;
-        Relationship[] forsakenRelations;
-        Relationship[] chosenRelations;
-        int forsakenID;
-        Chosen[] formerPartners;
-        int[] formerFriendships;
-        long hateExp;
-        long pleaExp;
-        long injuExp;
-        long expoExp;
-        int combatStyle;
-        int injured;
+        //forsaken.killRelationships;
+        overlord.defeatType = sacrifice.defeatType; //how they were taken
+        overlord.formerSelf = sacrifice.formerSelf; //who they were before
+        overlord.formerRelationships = sacrifice.formerRelationships;
+        overlord.firstPartner = sacrifice.firstPartner;
+        overlord.secondPartner = sacrifice.secondPartner;
+        overlord.firstFormerPartner = sacrifice.firstFormerPartner;
+        overlord.secondFormerPartner = sacrifice.secondFormerPartner;
+        overlord.firstOriginalRelationship = sacrifice.firstOriginalRelationship;
+        overlord.secondOriginalRelationship = sacrifice.secondOriginalRelationship;
+        overlord.others = sacrifice.others;
+        overlord.otherChosen = sacrifice.otherChosen;
+        overlord.troublemaker = sacrifice.troublemaker;     //should be set by player at some point
+        overlord.forsakenRelations = sacrifice.forsakenRelations;
+        overlord.chosenRelations = sacrifice.chosenRelations;
+        overlord.forsakenID = sacrifice.forsakenID;
+        //Chosen[] formerPartners;
+        //int[] formerFriendships;
+        overlord.hateExp = 0;
+        overlord.pleaExp = 0;
+        overlord.injuExp = 0;
+        overlord.expoExp = 0;
+        overlord.combatStyle = this.overlordCombatStyle;
+        overlord.injured = 0;
 
 
         overlord.ruthless = this.overlordIsRuthless;
