@@ -4,7 +4,7 @@ public class BreedmodGeneticsRoll {
     public int newGene(){
         /**
          * Returns a random int between 0 and 100, based on a
-         * normal logarithmic distribution centered at 50
+         * normal logarithmic distribution centered at 0
          * 
          * 50% of population below 0
          * 25% of population from 0-10
