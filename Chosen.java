@@ -69018,7 +69018,11 @@ public class Chosen implements Serializable {
 			}
 		}
 		w.append(t, ".");
+
+		//BREEDMOD START
 		w.append(t, chosenGenetics.printNameValuePair());
+
+		//BREEDMOD END
 	}
 	
 	public String announcement() {
