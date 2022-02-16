@@ -69773,20 +69773,23 @@ public class Chosen implements Serializable {
 
 		//BREEDMOD START
 		BreedmodVariables newGenetics = new BreedmodVariables();
+		if (type == Species.SUPERIOR) {
+			newGenetics.isSuperior = 1;
+		}
 
 		//if the new chosen is not a child, random variables assigned
 		if (!isBreedmodChild) {
 
 			newGenetics.instantiateBreedmodVars();
-			this.chosenGenetics = newGenetics;
 
 		} else {
 		//if the new chosen is a child, generate from parent genetics
-			
+		
 			newGenetics.childBreedmodVars(fatherGenetics, motherGenetics);
-			this.chosenGenetics = newGenetics();
 
 		}
+
+		this.chosenGenetics = newGenetics;
 
 		//BREEDMOD END
 

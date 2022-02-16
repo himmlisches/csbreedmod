@@ -1,6 +1,10 @@
 public class BreedmodChosenGen {
 	//see line 90750 of chosen.class for call
 
+	int fatherIsHighVariance;
+	int motherIsHighVariance;
+	int motherIsSuperior;
+	int fatherIsSuperior;
 
 	public int initializeGeneticsValue(int skew, int max, int min) {
 		/**
@@ -36,7 +40,7 @@ public class BreedmodChosenGen {
 
 	public int childGeneticsValue(int fatherGene, int motherGene){
 		
-		double childVariance = (double) ((fatherGene.isHighVariance + motherGene.isHighVariance)*10 + 10);
+		double childVariance = (double) ((fatherIsHighVariance + motherIsHighVariance)*10 + 10);
 
 
 		int result;
@@ -52,7 +56,7 @@ public class BreedmodChosenGen {
 		result = genetics.childGene(fatherGene, motherGene, childVariance);
 
 		//if the parents are superior, give a better roll
-		if (motherGene.isSuperior = 1 || fatherGene.isSuperior){
+		if (motherIsSuperior == 1){
 			result = result + 7;
 		}
 

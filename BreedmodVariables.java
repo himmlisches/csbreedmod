@@ -170,7 +170,13 @@ public class BreedmodVariables {
     public void childBreedmodVars(BreedmodVariables fatherGenetics, BreedmodVariables motherGenetics){
 
     BreedmodChosenGen newGeneticsRoller = new BreedmodChosenGen();
-
+    newGeneticsRoller.fatherIsHighVariance = fatherGenetics.isHighVariance;
+    newGeneticsRoller.motherIsHighVariance = motherGenetics.isHighVariance;
+    newGeneticsRoller.motherIsSuperior = motherGenetics.isSuperior;
+    newGeneticsRoller.fatherIsSuperior = fatherGenetics.isHighVariance;
+    if (motherGenetics.ovulationFrequency > 85) {
+        
+    }
 
     this.analSensitivity = newGeneticsRoller.childGeneticsValue(fatherGenetics.analSensitivity, motherGenetics.analSensitivity);
     this.analCapacity = newGeneticsRoller.childGeneticsValue(fatherGenetics.analCapacity, motherGenetics.analCapacity);
