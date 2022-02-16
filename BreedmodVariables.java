@@ -76,12 +76,13 @@ public class BreedmodVariables {
     int dickGirth;
     int testicleSize;
 
+
     public void instantiateBreedmodVars(){
         BreedmodChosenGen breedmodVariables = new BreedmodChosenGen();
 
         this.isSuperior = 0;
         this.isHighVariance = 0;
-        
+
         //(skew of distribution, max of value, min of value)
         //Many of these should be tied together, but this is fine for now
        this.analSensitivity = breedmodVariables.initializeGeneticsValue(-10, 30, 1);
@@ -175,7 +176,7 @@ public class BreedmodVariables {
     newGeneticsRoller.motherIsSuperior = motherGenetics.isSuperior;
     newGeneticsRoller.fatherIsSuperior = fatherGenetics.isHighVariance;
     if (motherGenetics.ovulationFrequency > 85) {
-        
+
     }
 
     this.analSensitivity = newGeneticsRoller.childGeneticsValue(fatherGenetics.analSensitivity, motherGenetics.analSensitivity);
@@ -237,6 +238,73 @@ public class BreedmodVariables {
     this.dickLength = newGeneticsRoller.childGeneticsValue(fatherGenetics.dickLength, motherGenetics.dickLength);
     this.dickGirth = newGeneticsRoller.childGeneticsValue(fatherGenetics.dickGirth, motherGenetics.dickGirth);
     this.testicleSize = newGeneticsRoller.childGeneticsValue(fatherGenetics.testicleSize, motherGenetics.testicleSize);
+
+
+    }
+
+    public String printNameValuePair(){
+
+        String output = "";
+
+        output.concat("analSensitivity is " this.analSensitivity"\n");
+        output.concat("analCapacity is " this.analCapacity"\n");
+        output.concat("analTightness is " this.analTightness"\n");
+        output.concat("analLubrication is " this.analLubrication"\n");
+        output.concat("analHoldsInCum is " this.analHoldsInCum"\n");
+        output.concat("vagSensitivity is " this.vagSensitivity"\n");
+        output.concat("vagCapacity is " this.vagCapacity"\n");
+        output.concat("vagTightness is " this.vagTightness"\n");
+        output.concat("vagLubrication is " this.vagLubrication"\n");
+        output.concat("vagHoldsInCum is " this.vagHoldsInCum"\n");
+        output.concat("wombCapacity is " this.wombCapacity"\n");
+        output.concat("cervixSensitivity is " this.cervixSensitivity"\n");
+        output.concat("cervixPenetration is " this.cervixPenetration"\n");
+        output.concat("girthQueen is " this.girthQueen"\n");
+        output.concat("lengthQueen is " this.lengthQueen"\n");
+        output.concat("ovulationFrequency is " this.ovulationFrequency"\n");
+        output.concat("ovulationQuantity is " this.ovulationQuantity"\n");
+        output.concat("pregnancyCraving is " this.pregnancyCraving"\n");
+        output.concat("pregnancyRate is " this.pregnancyRate"\n");
+        output.concat("goesIntoHeat is " this.goesIntoHeat"\n");
+        output.concat("pheremones is " this.pheremones"\n");
+        output.concat("hipSize is " this.hipSize"\n");
+        output.concat("hipShape is " this.hipShape"\n");
+        output.concat("buttSize is  " this.buttSize"\n");
+        output.concat("buttShape is " this.buttShape"\n");
+        output.concat("boobSize is " this.boobSize"\n");
+        output.concat("boobShape is " this.boobShape"\n");
+        output.concat("boobSensitivity is " this.boobSensitivity"\n");
+        output.concat("milkProduction is " this.milkProduction"\n");
+        output.concat("milkType is " this.milkType"\n");
+        output.concat("gagReflex is " this.gagReflex"\n");
+        output.concat("throatSensitivity is " this.throatSensitivity"\n");
+        output.concat("cumFlavorDesire is " this.cumFlavorDesire"\n");
+        output.concat("cumDependency is " this.cumDependency"\n");
+        output.concat("facialBeauty is " this.facialBeauty"\n");
+        output.concat("facialArchetype is " this.facialArchetype"\n");
+        output.concat("height is " this.height"\n");
+        output.concat("waistWidth is " this.waistWidth"\n");
+        output.concat("musculature is " this.musculature"\n");
+        output.concat("fatPercentage is " this.fatPercentage"\n");
+        output.concat("skinColor is "this.skinColor"\n");
+        output.concat("flexibility is " this.flexibility"\n");
+        output.concat("hairColor is " this.hairColor"\n");
+        output.concat("hairLength is " this.hairLength"\n");
+        output.concat("growsHairBelowNeck is " this.growsHairBelowNeck"\n");
+        output.concat("intelligence is " this.intelligence"\n");
+        output.concat("ego is " this.ego"\n");
+        output.concat("submissiveness is " this.submissiveness"\n");
+        output.concat("naturalMasochism is " this.naturalMasochism"\n");
+        output.concat("libido is " this.libido"\n");
+        output.concat("incestResistance is " this.incestResistance"\n");
+        output.concat("cumProduction is " this.cumProduction"\n");
+        output.concat("cumPotency is " this.cumPotency"\n");
+        output.concat("cumTaste is " this.cumTaste"\n");
+        output.concat("cumIntoxication is " this.cumIntoxication"\n");
+        output.concat("cumKiller is " this.cumKiller"\n");
+        output.concat("dickLength is " this.dickLength"\n");
+        output.concat("dickGirth is " this.dickGirth"\n");
+        output.concat("testicleSize is " this.testicleSize"\n");
 
 
     }

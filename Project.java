@@ -7279,6 +7279,14 @@ public class Project extends JFrame {
 						}
 						w.append(t, " " + w.getCast()[i].getParasitismEffectiveness() + "%");
 					}
+
+					//BREEDMOD START
+					w.append(t, "/n");
+
+					
+					w.append(t, (w.getCast()[i].chosenGenetics.printNameValuePair()));
+
+					//BREEDMOD END
 				}
 			}
 			for (int i = 0; i < 3 && w.loopComplete == false; i++) {
