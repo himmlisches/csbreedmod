@@ -10,6 +10,11 @@ public class Forsaken implements Serializable {
 	
 	private static final long serialVersionUID = 4L;
 	
+	//BREEDMOD VARIABLE START
+	BreedmodVariables forsakenGenetics;
+
+	//BREEDMOD VARIABLE END
+
 	int textSize = 16;
 	
 	String givenName;

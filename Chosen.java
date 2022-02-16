@@ -11,6 +11,14 @@ public class Chosen implements Serializable {
 	
 	private static final long serialVersionUID = 4L;
 	
+	//BREEDMOD START
+	Chosen mother;
+	Chosen father;
+	Boolean isBreedmodChild;
+	BreedmodVariables chosenGenetics;
+
+	//BREEDMOD END
+	
 	int textSize = 16;
 	
 	String givenName;
@@ -23,7 +31,7 @@ public class Chosen implements Serializable {
 	String adjectiveName;
 	String nounName;
 	String mainName;
-	String topCover; 
+	String topCover;
 	String topAccess;
 	String bottomCover;
 	String bottomAccess;
@@ -69761,6 +69769,22 @@ public class Chosen implements Serializable {
 		if (dignity > 66) {
 			bonusEXPO = true;
 		}
+
+
+		//BREEDMOD START
+		BreedmodVariables newGenetics = new BreedmodVariables();
+
+		if (!isBreedmodChild) {
+
+			newGenetics.instantiateBreedmodVars();
+			this.chosenGenetics = newGenetics;
+
+		}
+
+		//BREEMOD END
+
+
+
 	}
 	
 	public String[] genName(WorldState w, int[] seed) {
