@@ -306,7 +306,7 @@ public class BreedmodVariables {
         output.concat("dickGirth is " this.dickGirth"\n");
         output.concat("testicleSize is " this.testicleSize"\n");
 
-
+        return output;
     }
 }
 
