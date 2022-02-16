@@ -12,10 +12,10 @@ public class Chosen implements Serializable {
 	private static final long serialVersionUID = 4L;
 	
 	//BREEDMOD START
-	Chosen mother;
-	Chosen father;
 	Boolean isBreedmodChild;
 	BreedmodVariables chosenGenetics;
+	BreedmodVariables motherGenetics;
+	BreedmodVariables fatherGenetics;
 
 	//BREEDMOD END
 	
@@ -69774,14 +69774,21 @@ public class Chosen implements Serializable {
 		//BREEDMOD START
 		BreedmodVariables newGenetics = new BreedmodVariables();
 
+		//if the new chosen is not a child, random variables assigned
 		if (!isBreedmodChild) {
 
 			newGenetics.instantiateBreedmodVars();
 			this.chosenGenetics = newGenetics;
 
+		} else {
+		//if the new chosen is a child, generate from parent genetics
+			
+			newGenetics.childBreedmodVars(fatherGenetics, motherGenetics);
+			this.chosenGenetics = newGenetics();
+
 		}
 
-		//BREEMOD END
+		//BREEDMOD END
 
 
 
