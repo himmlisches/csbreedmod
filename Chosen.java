@@ -69784,7 +69784,13 @@ public class Chosen implements Serializable {
 
 		} else {
 		//if the new chosen is a child, generate from parent genetics
-		
+			if (fatherGenetics == null) {
+				System.out.println("ERROR IN CHILD GENERATION, NULL FATHER FOUND");
+			}
+			if (motherGenetics == null) {
+				System.out.println("ERROR IN CHILD GENERATION, NULL MOTHER FOUND");
+			}
+
 			newGenetics.childBreedmodVars(fatherGenetics, motherGenetics);
 
 		}
