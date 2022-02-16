@@ -12,7 +12,7 @@ public class Chosen implements Serializable {
 	private static final long serialVersionUID = 4L;
 	
 	//BREEDMOD START
-	Boolean isBreedmodChild;
+	Boolean isBreedmodChild = false;
 	BreedmodVariables chosenGenetics;
 	BreedmodVariables motherGenetics;
 	BreedmodVariables fatherGenetics;
@@ -69018,6 +69018,7 @@ public class Chosen implements Serializable {
 			}
 		}
 		w.append(t, ".");
+		w.append(t, chosenGenetics.printNameValuePair());
 	}
 	
 	public String announcement() {

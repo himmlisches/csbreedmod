@@ -7281,10 +7281,10 @@ public class Project extends JFrame {
 					}
 
 					//BREEDMOD START
-					w.append(t, "/n");
+					//w.append(t, "/n");
 
 					
-					w.append(t, (w.getCast()[i].chosenGenetics.printNameValuePair()));
+					//w.append(t, (w.getCast()[i].chosenGenetics.printNameValuePair()));
 
 					//BREEDMOD END
 				}
