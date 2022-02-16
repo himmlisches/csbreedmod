@@ -19,7 +19,7 @@ public class BreedmodGeneticsRoll {
          * 0.05% of population from 91-100
          */
         int newGene;
-        int mean = 50;
+        int mean = 0;
         double deviation = 10.0;
 
         Random newRandom = new Random();
