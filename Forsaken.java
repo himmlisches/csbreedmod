@@ -12,6 +12,9 @@ public class Forsaken implements Serializable {
 	
 	//BREEDMOD VARIABLE START
 	BreedmodVariables forsakenGenetics;
+	Boolean isBreedmodChild = false;
+	BreedmodVariables motherGenetics;
+	BreedmodVariables fatherGenetics;
 
 	//BREEDMOD VARIABLE END
 
@@ -352,6 +355,13 @@ public class Forsaken implements Serializable {
 		}
 		type = c.type;
 		chooseCombatStyle();
+
+		//BREEDMOD START
+		forsakenGenetics = c.chosenGenetics;
+		isBreedmodChild = c.isBreedmodChild;
+		motherGenetics = c.motherGenetics;
+		fatherGenetics = c.fatherGenetics;
+		//BREEDMOD END
 	}
 	
 	public void selfTalk(JTextPane t) {
